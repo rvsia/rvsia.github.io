@@ -1,44 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="storybook-version" content="3.4.11">
     <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <title>Storybook</title>
+    <base target="_parent">
+    <title>Stor Wars leaderboards</title>
     <style>
-        /*
-          When resizing panels, the drag event breaks if the cursor
-          moves over the iframe. Add the 'dragging' class to the body
-          at drag start and remove it when the drag ends.
-         */
-        .dragging iframe {
-            pointer-events: none;
+        .row{
+            display: flex;
         }
 
-        /* Styling the fuzzy search box placeholders */
-        .searchBox::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-            color: #ddd;
-            font-size: 16px;
+        body {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
         }
 
-        .searchBox::-moz-placeholder { /* Firefox 19+ */
-            color: #ddd;
-            font-size: 16px;
+        .fade {
+        position: relative;
+        width: 100%;
+        min-height: 60vh;
+        top: -25px;
+        background-image: linear-gradient(0deg, transparent, black 75%);
+        z-index: 1;
         }
 
-        .searchBox:focus{
-            border-color: #EEE !important;
+        .star-wars {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        height: 800px;
+        color: #feda4a;
+        font-family: 'Pathway Gothic One', sans-serif;
+        font-size: 500%;
+        font-weight: 600;
+        letter-spacing: 6px;
+        line-height: 150%;
+        perspective: 400px;
+        text-align: justify;
         }
 
-        .btn:hover{
-            background-color: #eee
+        .crawl {
+        position: relative;
+        top: 9999px;
+        transform-origin: 50% 100%;
+        animation: crawl 60s linear;
+        }
+
+        .crawl > .title {
+        font-size: 90%;
+        text-align: center;
+        }
+
+        .crawl > .title h1 {
+        margin: 0 0 100px;
+        text-transform: uppercase;
+        }
+
+        @keyframes crawl {
+        0% {
+            top: 0;
+            transform: rotateX(20deg)  translateZ(0);
+        }
+        100% { 
+            top: -6000px;
+            transform: rotateX(25deg) translateZ(-2500px);
+        }
         }
     </style>
-    
-
 </head>
-<body style="margin: 0;">
-    <div id="root"></div>
-<script type="text/javascript" src="static/manager.5df7987d63fab52d02a7.bundle.js"></script></body>
+
+<body>
+    <div class="fade"></div>
+    <section class="star-wars">
+        <div class="crawl">
+            <div class="title">
+                <p>Stor Wars</p>
+                <h1>Leaderboards</h1>
+            </div>
+            <div id="root"></div>
+        </div>
+    </section>
+</div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="leaderboards.js"></script>
 </html>
