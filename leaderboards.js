@@ -6,7 +6,7 @@ const Leaderboards = () => {
     const [isLoading, setLoading] = React.useState(true)
     const [data, setData] = React.useState([]);
 
-    React.useEffect(() => {
+    React.useEffect(() => {
         fetch('http://dreamlo.com/lb/611e7abc8f40bb6e989fbd57/json')
             .then(response => response.json())
             .then(data => {
